@@ -17,5 +17,5 @@ function getFromSeatGeek(req, res, next) {
 }
 
 module.exports = {
-  getFromSeatGeek
+  getFromSeatGeek,
 }

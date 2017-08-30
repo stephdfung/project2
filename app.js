@@ -1,38 +1,27 @@
 const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
 const path = require('path');
-const methodOverride = require('method-override');
+const logger = require('morgan');
 
 const app = express();
 
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`);
+});
 
+app.use(logger('dev'));
 
 app.use(express.static('public'));
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
-
-// index route NON RENDER
 app.get('/', (req, res) => {
-  res.send('Hello world!');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// const imageRoutes = require('./routes/image-routes');
-// app.use('/images', imageRoutes);
+const eventsRouter = require('./routes/events-routes');
+app.use('/events', eventsRouter);
 
-// error handler
 app.use('*', (req, res) => {
-  res.status(404).json({
-    error: 'Not found, invalid endpoint',
+  res.status(400).json({
+    message: 'Not found!',
   });
 });
