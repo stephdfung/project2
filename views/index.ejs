@@ -1,0 +1,13 @@
+<% include ./partials/boilerplate %>
+
+<h1><%= title %></h1>
+
+<form id="search" action="/events" method="POST">
+
+  <input type='text' name='query' placeholder='Search by location'>
+  <input type='submit' value='Enter'>
+</form>
+
+<a href='/events'>See the events in your area</a>
+
+<% include ./partials/end %>

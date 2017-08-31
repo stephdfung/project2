@@ -1,0 +1,14 @@
+<% include ../partials/boilerplate %>
+
+<a href="/events/new">Add an event!</a>
+
+  <div class="event">
+    <h2><%= event.name %></h2>
+    <p><%= event.location %></p>
+    <p><%= event.url%></p>
+    <a href="/events/<%= event.id%>/edit">Edit</a>
+    <a href="/events/ %>">Back to the fill list!</a>
+  </div>
+
+
+<% include ../partials/end %>

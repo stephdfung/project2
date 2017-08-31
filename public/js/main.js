@@ -1,6 +1,6 @@
 function getEvent(e) {
   e.preventDefault();
-  fetch(`/events/${e.target.event.value}`)
+  fetch(`/events/${e.target.query.value}`)
   .then(res => res.json())
   .then(jsonRes => {
     console.log(jsonRes);
@@ -8,7 +8,7 @@ function getEvent(e) {
 }
 
 function getForm() {
-  const form = document.querySelector('#request');
+  const form = document.querySelector('#search');
   form.addEventListener('submit', (e) => getEvent(e));
   console.log('Button works')
 }

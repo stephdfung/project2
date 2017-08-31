@@ -1,0 +1,15 @@
+<% include ../partials/boilerplate %>
+
+<a href="/events/new">Add an event!</a>
+
+<% events.forEach(event => { %>
+  <div class="event">
+    <h2><%= event.name %></h2>
+    <p><%= event.location %></p>
+    <p><%= url%></p>
+    <a href="/events/<%=event.id%>">See more!</a>
+  </div>
+<% }) %>
+
+
+<% include ../partials/end %>

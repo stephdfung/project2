@@ -1,0 +1,14 @@
+<% include ../partials/boilerplate %>
+
+<a href="/users/new">Add a user!</a>
+
+  <div class="user">
+    <h2><%= users.username %></h2>
+    <p><%= users.email %></p>
+    <p><%= users.password%></p>
+    <a href="/users/<%= users.id%>/edit">Edit</a>
+    <a href="/users/ %>">Back to the fill list!</a>
+  </div>
+
+
+<% include ../partials/end %>

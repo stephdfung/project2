@@ -1,0 +1,15 @@
+<% include ../partials/boilerplate %>
+
+<a href="/users/new">Create new user</a>
+
+<% users.forEach(users => { %>
+  <div class="user">
+    <h2><%= users.username %></h2>
+    <p><%= users.email %></p>
+    <p><%= users.password %></p>
+    <a href="/users/<%=users.id%>">See more!</a>
+  </div>
+<% }) %>
+
+
+<% include ../partials/end %>
