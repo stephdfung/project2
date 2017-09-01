@@ -1,5 +1,5 @@
 \c dummy_data;
 
-INSERT INTO users (username, email, password) VALUES
+INSERT INTO users (username, email, password_digest) VALUES
   ('Test', 'testemail@test.com', '1234'
 );

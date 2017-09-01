@@ -4,15 +4,36 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const methodOverride = require('method-override');
 
+//auth requirements
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const authoRouter = require('./routes/auth-routes');
+const authHelpers = require('./services/auth/auth-helpers');
 
+//initalize it, time you recognize it
 const app = express();
 
+//secret hidden file stuff
+require('dotenv').config();
 
+//LOGIN AUTH
+app.use(cookieParser());
+app.use(session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitalized: true,
+}));
+app.use(passport.initalize());
+app.use(passport.session());
+app.use('/auth', authRouter);
+app.use(authHelpers.loginRequired);
+
+//other routes
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
