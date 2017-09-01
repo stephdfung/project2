@@ -17,7 +17,7 @@ eventRouter.get('/new', (req, res) => {
   res.render('events/event-add');
 });
 
-eventRouter.get('/:id', eventController.show);
+// eventRouter.get('/:id', eventController.show);
 eventRouter.get('/:id/edit', eventController.edit);
 eventRouter.put('/:id', eventController.update);
 

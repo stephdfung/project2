@@ -1,14 +1,27 @@
 <% include ../partials/boilerplate %>
 
-<a href="/events/new">Add an event!</a>
+<!--     <h2><%= event.name %> </h2>
 
-  <div class="event">
-    <h2><%= event.name %></h2>
-    <p><%= event.location %></p>
-    <p><%= event.url%></p>
+    <p> url</p>
+    <p> <%= event['events'][0]['title'] %> </p>
     <a href="/events/<%= event.id%>/edit">Edit</a>
     <a href="/events/ %>">Back to the fill list!</a>
-  </div>
+  </div> -->
 
+
+  <div class="event">
+    <h2><%= event['events'][0]['title'] %></h2>
+    <p><%= event['events'][0]['venue']['address'] %>, <%= event['events'][0]['venue']['city'] %> - <a href=" <%= event['events'][0]['venue']['url'] %>"> Tickets </a></p>
+    <p><img src=" <%= event['events'][0]['performers'][0]['image'] %> "> </p>
+
+      <form method="POST" action="/events">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="location" placeholder="location" />
+        <input type="text" name="url" placeholder="url" />
+        <input type="submit" value="Save" />
+      </form>
+
+    <a href="/events/<%=event.id%>">See more!</a>
+  </div>
 
 <% include ../partials/end %>

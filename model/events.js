@@ -6,13 +6,6 @@ Event.findAll = () => {
   return db.query('SELECT * FROM events');
 };
 
-// Event.searchOne = (location) => {
-//   return db.query(`
-//     SELECT * FROM events
-//     WHERE location = $1
-//     `, [location]);
-// };
-
 Event.findById = (id) => {
   return db.oneOrNone(`
     SELECT * FROM events

@@ -15,12 +15,18 @@ eventController.index = (req, res) => {
 }
 
 eventController.sendApiSeatGeek = (req, res) => {
-  console.log(`${req.body.query}`)
-  res.json({
-    message: `Events for ${req.body.query}`,
-    event: res.locals.eventData,
-  });
-}
+  res.render('events/event-show', {
+    event: res.locals.eventData
+  })
+};
+
+//THIS IS THE ORIGINAL JSON API DATA SHOW
+// eventController.sendApiSeatGeek = (req, res) => {
+//   res.json({
+//     message: `Events for ${req.body.query}`,
+//     event: res.locals.eventData,
+//   });
+// }
 
 // eventController.main = (req, res) => {
 //   Event.searchOne()
@@ -34,17 +40,18 @@ eventController.sendApiSeatGeek = (req, res) => {
 //     });
 // }
 
-eventController.show = (req, res) => {
-  Event.findById(req.params.id)
-    .then(event => {
-      res.render('events/event-show', {
-        event: event,
-      });
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-}
+// THIS IS THE ORIGINAL SHOW FUNCTION
+// eventController.show = (req, res) => {
+//   Event.findById(req.params.id)
+//     .then(event => {
+//       res.render('events/event-show', {
+//         event: event,
+//       });
+//     }).catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// }
 
 eventController.create = (req, res) => {
   Event.create({
