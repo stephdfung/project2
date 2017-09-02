@@ -2,6 +2,7 @@
 
 DROP TABLE events;
 DROP TABLE users;
+DROP TABLE favorites;
 
 CREATE TABLE IF NOT EXISTS events
 (
@@ -18,4 +19,11 @@ CREATE TABLE IF NOT EXISTS users
   username VARCHAR(255) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password_digest TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS favorites
+(
+  id SERIAL PRIMARY KEY,
+  user_id VARCHAR,
+  event_id VARCHAR
 );

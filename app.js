@@ -1,3 +1,4 @@
+//dependencies
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -8,8 +9,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-const authoRouter = require('./routes/auth-routes');
-const authHelpers = require('./services/auth/auth-helpers');
+// const authHelpers = require('./services/auth/auth-helpers');
 
 //initalize it, time you recognize it
 const app = express();
@@ -22,12 +22,11 @@ app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
-  saveUninitalized: true,
+  saveUninitialized: true,
 }));
-app.use(passport.initalize());
+app.use(passport.initialize());
 app.use(passport.session());
-app.use('/auth', authRouter);
-app.use(authHelpers.loginRequired);
+// app.use(authHelpers.loginRequired)
 
 //other routes
 app.use(logger('dev'));
@@ -52,6 +51,9 @@ app.get('/', (req, res) => {
 
 const eventRoutes = require('./routes/event-routes');
 app.use('/events', eventRoutes);
+
+const authRouter = require('./routes/auth-routes');
+app.use('/auth', authRouter);
 
 const userRoutes = require('./routes/user-routes');
 app.use('/users', userRoutes);

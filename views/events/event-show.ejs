@@ -8,20 +8,22 @@
     <a href="/events/ %>">Back to the fill list!</a>
   </div> -->
 
-
+<% for (var i = 0; i < 4; i++) { %>
   <div class="event">
-    <h2><%= event['events'][0]['title'] %></h2>
-    <p><%= event['events'][0]['venue']['address'] %>, <%= event['events'][0]['venue']['city'] %> - <a href=" <%= event['events'][0]['venue']['url'] %>"> Tickets </a></p>
-    <p><img src=" <%= event['events'][0]['performers'][0]['image'] %> "> </p>
+    <h2><%= event['events'][i]['title'] %></h2>
+    <p><%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %> - <a href=" <%= event['events'][i]['venue']['url'] %>"> Tickets </a></p>
+    <p><img src=" <%= event['events'][i]['performers'][0]['image'] %> "> </p>
 
-      <form method="POST" action="/events">
-        <input type="text" name="name" placeholder="Name" />
-        <input type="text" name="location" placeholder="location" />
-        <input type="text" name="url" placeholder="url" />
+      <form method="POST" action="/favorites">
+        <input type="hidden" name="name" value="<%= event['events'][i]['title'] %>" />
+        <input type="hidden" name="location" value="<%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %>" />
+        <input type="hidden" name="image" value="image" />
+        <input type="hidden" name="url" value="url" />
         <input type="submit" value="Save" />
       </form>
+<% } %>
 
-    <a href="/events/<%=event.id%>">See more!</a>
+    <a href="/>">Search another city!</a>
   </div>
 
 <% include ../partials/end %>

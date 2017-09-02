@@ -10,9 +10,10 @@ function getFromSeatGeek(req, res, next) {
     .then(data => {
 
       console.log(data['events'][0]['title'])
+      console.log(data['events'][0]['performers'][0]['image'])
 
       res.locals.eventData = data;
-      let .name = ['events'][0]['title']
+      let name = ['events'][0]['title']
       let url = ['events'][0]['performers'][0]['url']
 
       next();
