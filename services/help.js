@@ -12,9 +12,15 @@ function getFromSeatGeek(req, res, next) {
       console.log(data['events'][0]['title'])
       console.log(data['events'][0]['performers'][0]['image'])
 
+      // couldn't put the selectors into variables T_T
+      // let event = {};
+
+      // event.title = data['events'][i]['title']
+      // event.location = data['events'][i]['venue']['address'], data['events'][i]['venue']['city']
+      // event.url = data['events'][i]['venue']['url']
+      // event.image = data['events'][i]['performers'][0]['image']
+
       res.locals.eventData = data;
-      let name = ['events'][0]['title']
-      let url = ['events'][0]['performers'][0]['url']
 
       next();
     }).catch(err => {

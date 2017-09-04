@@ -54,12 +54,15 @@ eventController.sendApiSeatGeek = (req, res) => {
 // }
 
 eventController.create = (req, res) => {
+  console.log('Inside events post route')
+  console.log(req.body)
   Event.create({
     name: req.body.name,
     location: req.body.location,
+    image: req.body.image,
     url: req.body.url,
   }).then(event => {
-    res.redirect(`/events/${event.id}`)
+    res.redirect(`/`)
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);

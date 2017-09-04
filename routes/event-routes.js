@@ -9,7 +9,7 @@ const eventController = require('../controller/events-controller');
 // initial two routes
 // eventRouter.get('/', eventController.index);
 eventRouter.post('/', eventHelper.getFromSeatGeek, eventController.sendApiSeatGeek);
-eventRouter.post('/', eventController.create);
+eventRouter.post('/events', eventController.create);
 
 // eventRouter.get('/:id', eventController.main);
 

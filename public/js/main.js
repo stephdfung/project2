@@ -1,16 +1,31 @@
-function getEvent(e) {
-  e.preventDefault();
-  fetch(`/events/${e.target.query.value}`)
-  .then(res => res.json())
-  .then(jsonRes => {
-    console.log(jsonRes);
-  })
-}
+// function getEvent(e) {
+//   e.preventDefault();
+//   fetch(`/events/${e.target.query.value}`)
+//   .then(res => res.json())
+//   .then(jsonRes => {
+//     console.log(jsonRes);
+//   })
+// }
 
-function getForm() {
-  const form = document.querySelector('#search');
-  form.addEventListener('submit', (e) => getEvent(e));
-  console.log('Button works')
-}
+// function getForm() {
+//   const form = document.querySelector('#search');
+//   form.addEventListener('submit', (e) => getEvent(e));
+//   console.log('Button works')
+// }
 
-document.addEventListener('DOMContentLoaded', getForm);
+// document.addEventListener('DOMContentLoaded', getForm);
+
+$(document).ready(function(){
+
+
+console.log("ready!");
+
+
+$('.event').submit(function () {
+  console.log('submit run')
+ return false;
+});
+
+
+
+});
