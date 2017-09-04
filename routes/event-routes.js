@@ -3,13 +3,14 @@ const express = require('express');
 // initialize router
 const eventRouter = express.Router();
 const eventHelper = require('../services/help');
+const authHelper = require('../services/auth/auth-helpers');
 
 const eventController = require('../controller/events-controller');
 
 // initial two routes
 // eventRouter.get('/', eventController.index);
 eventRouter.post('/', eventHelper.getFromSeatGeek, eventController.sendApiSeatGeek);
-eventRouter.post('/events', eventController.create);
+eventRouter.post('/', authHelper.loginRequired, eventController.create);
 
 // eventRouter.get('/:id', eventController.main);
 

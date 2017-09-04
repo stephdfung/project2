@@ -1,0 +1,12 @@
+<% include ../partials/boilerplate %>
+
+
+<% events.forEach(events => { %>
+  <div class="event">
+        <h2><%= events.name %></h2>
+        <p><%= events.location %></p>
+        <p><a href="<%= events.url %>">Find tickets</a></p>
+  </div>
+<% }) %>
+
+<% include ../partials/end %>

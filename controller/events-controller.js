@@ -20,40 +20,7 @@ eventController.sendApiSeatGeek = (req, res) => {
   })
 };
 
-//THIS IS THE ORIGINAL JSON API DATA SHOW
-// eventController.sendApiSeatGeek = (req, res) => {
-//   res.json({
-//     message: `Events for ${req.body.query}`,
-//     event: res.locals.eventData,
-//   });
-// }
-
-// eventController.main = (req, res) => {
-//   Event.searchOne()
-//     .then(events => {
-//       res.render('events/${event.id}', {
-//         events: events,
-//       })
-//     }).catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// }
-
-// THIS IS THE ORIGINAL SHOW FUNCTION
-// eventController.show = (req, res) => {
-//   Event.findById(req.params.id)
-//     .then(event => {
-//       res.render('events/event-show', {
-//         event: event,
-//       });
-//     }).catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// }
-
-eventController.create = (req, res) => {
+eventController.create = (req, res, next) => {
   console.log('Inside events post route')
   console.log(req.body)
   Event.create({
@@ -61,7 +28,8 @@ eventController.create = (req, res) => {
     location: req.body.location,
     image: req.body.image,
     url: req.body.url,
-  }).then(event => {
+  }, req.user.id)
+  .then(event => {
     res.redirect(`/`)
   }).catch(err => {
     console.log(err);

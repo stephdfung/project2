@@ -9,9 +9,6 @@ function getFromSeatGeek(req, res, next) {
     .then(data => data.json())
     .then(data => {
 
-      console.log(data['events'][0]['title'])
-      console.log(data['events'][0]['performers'][0]['image'])
-
       // couldn't put the selectors into variables T_T
       // let event = {};
 
