@@ -1,4 +1,3 @@
-\c dummy_data;
 
 DROP TABLE events;
 DROP TABLE users;

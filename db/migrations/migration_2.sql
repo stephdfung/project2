@@ -1,4 +1,4 @@
-\c dummy_data;
+
 
 DROP TABLE favorites;
 
