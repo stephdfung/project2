@@ -15,22 +15,34 @@ eventController.index = (req, res) => {
 }
 
 eventController.sendApiSeatGeek = (req, res) => {
-  res.render('events/event-show', {
+  res.render('events/search', {
     event: res.locals.eventData
   })
 };
 
+eventController.show = (req, res) => {
+  Event.findById(req.params.id)
+    .then(event => {
+      res.render('event/event-show', {
+        event: event,
+      });
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+}
+
 eventController.create = (req, res, next) => {
   console.log('Inside events post route')
-  console.log(req.body)
   Event.create({
     name: req.body.name,
     location: req.body.location,
     image: req.body.image,
     url: req.body.url,
   }, req.user.id)
-  .then(event => {
-    res.redirect(`/`)
+  .then(favorite => {
+    res.direct(`/events/${event.id}`)
+    next();
   }).catch(err => {
     console.log(err);
     res.status(500).json(err);
