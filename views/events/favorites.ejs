@@ -5,8 +5,18 @@
   <div class="event">
         <h2><%= allFavorites.name %></h2>
         <p><%= allFavorites.location %></p>
-        <p> <%= allFavorites.image %> </p>
+        <p><img src=" <%= allFavorites.image %> "></p>
         <p><a href="<%= allFavorites.url %>">Find tickets</a></p>
+
+
+        <form method="DELETE" action="/events/favorites">
+        <input type="hidden" name="name" value="<%= event['events'][i]['title'] %>" />
+        <input type="hidden" name="location" value="<%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %>" />
+        <input type="hidden" name="image" value="<%= event['events'][i]['performers'][0]['image'] %>" />
+        <input type="hidden" name="url" value="<%= event['events'][i]['venue']['url'] %>" />
+        <input type="submit" value="Save" />
+      </form>
+      </div>
   </div>
 <% }) %>
 
