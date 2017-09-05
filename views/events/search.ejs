@@ -1,18 +1,32 @@
-<% include ../partials/boilerplate %>
-
-<% for (var i = 0; i < 4; i++) { %>
+<% include ../partials/boilerplate2 %>
 
 
-      <form method="POST" action="/events">
-        <input type="text" name="name" value="Pax West" />
-        <input type="text" name="location" value="200 University Street, Seattle" />
-        <input type="text" name="image" value="" />
-        <input type="text" name="url" value="https://seatgeek.com/venues/benaroya-hall/tickets" />
-        <input type="submit" value="Save" />
-      </form>
-<% } %>
 
-    <a href="/>">Search another city!</a>
+
+<div class="slider">
+
+  <% for (var i = 0; i < 4; i++) { %>
+
+      <div class="event">
+      <h3><%= event['events'][i]['title'] %></h3>
+
+      <h4><%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %> | <a href=" <%= event['events'][i]['venue']['url'] %>"> Tickets </a></h4>
+      <p><img src=" <%= event['events'][i]['performers'][0]['image'] %> "> </p>
+
+        <form method="POST" action="/events/favorites">
+          <input type="hidden" name="name" value="<%= event['events'][i]['title'] %>" />
+          <input type="hidden" name="location" value="<%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %>" />
+          <input type="hidden" name="image" value="<%= event['events'][i]['performers'][0]['image'] %>" />
+          <input type="hidden" name="url" value="<%= event['events'][i]['venue']['url'] %>" />
+          <input type="submit" value="Save" />
+        </form>
+        </div>
+
+    <% } %>
+
+</div>
+
+    <a href="/">Search another city!</a>
   </div>
 
-<% include ../partials/end %>
+<% include ../partials/end2 %>

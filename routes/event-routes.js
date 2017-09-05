@@ -10,19 +10,12 @@ const eventController = require('../controller/events-controller');
 // initial two routes
 // eventRouter.get('/', eventController.index);
 eventRouter.post('/', eventHelper.getFromSeatGeek, eventController.sendApiSeatGeek);
-eventRouter.post('/', authHelper.loginRequired, eventController.create);
+eventRouter.post('/favorites', authHelper.loginRequired, eventController.create, eventController.join, eventController.favorite);
 
-// eventRouter.get('/:id', eventController.main);
 
-eventRouter.get('/new', (req, res) => {
-  res.render('events/event-add');
-});
-
-// eventRouter.get('/:id', eventController.show);
-eventRouter.get('/:id/edit', eventController.edit);
+eventRouter.get('/:id', eventController.show);
 eventRouter.put('/:id', eventController.update);
 
 eventRouter.delete('/:id', eventController.delete);
-
 
 module.exports = eventRouter;

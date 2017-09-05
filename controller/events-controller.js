@@ -1,4 +1,5 @@
 const Event = require('../model/events');
+const Favorite = require('../model/favorites');
 
 const eventController = {};
 
@@ -32,6 +33,7 @@ eventController.show = (req, res) => {
     });
 }
 
+//saving the api info to the local events table
 eventController.create = (req, res, next) => {
   console.log('Inside events post route')
   Event.create({
@@ -40,8 +42,8 @@ eventController.create = (req, res, next) => {
     image: req.body.image,
     url: req.body.url,
   }, req.user.id)
-  .then(favorite => {
-    res.direct(`/events/${event.id}`)
+  .then(event => {
+    res.locals.event = event
     next();
   }).catch(err => {
     console.log(err);
@@ -49,16 +51,33 @@ eventController.create = (req, res, next) => {
   });
 }
 
-eventController.edit = (req, res) => {
-  Event.findById(req.params.id)
-    .then(event => {
-      res.render('events/event-edit', {
-        event: event,
-      });
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+eventController.join = (req, res, next) => {
+  Favorite.display(req.user.id)
+  .then(favorite => {
+    res.locals.favorite = favorite
+    next();
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+}
+
+//saving the user id and the new event id to the favorites table
+eventController.favorite = (req, res, next) => {
+  Favorite.create({
+    user_id: req.user.id,
+    event_id: res.locals.event.id
+  }).then(favorite => {
+    res.render('events/favorites', {
+      favorite: favorite,
+      event: res.locals.event,
+      allFavorites: res.locals.favorite
+    })
+    next();
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 }
 
 eventController.update = (req, res) => {
@@ -74,10 +93,11 @@ eventController.update = (req, res) => {
   });
 }
 
-eventController.delete = (req, res) => {
-  Event.destroy(req.params.id)
-    .then(() => {
-      res.redirect('/events');
+eventController.delete = (req, res, next) => {
+  Favorite.destroy(req.params.id)
+    .then((event) => {
+      res.redirect('/favorites');
+      next();
     }).catch(err => {
       console.log(err);
       res.status(500).json(err);

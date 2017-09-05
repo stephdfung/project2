@@ -8,7 +8,17 @@ Favorite.create = data => {
     (user_id, event_id)
     VALUES ($1, $2)
     RETURNING *
-  `, [data.user, data.event_id]);
+  `, [data.user_id, data.event_id]);
+};
+
+Favorite.display = id => {
+  return db.query(`
+    SELECT events.name, events.location, events.image, events.url
+    FROM events
+    JOIN favorites
+    ON favorites.event_id = events.id
+    WHERE favorites.user_id = $1`,
+    [ id ]);
 };
 
 Favorite.destroy = favorite => {

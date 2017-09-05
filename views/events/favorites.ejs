@@ -1,12 +1,13 @@
-<% include ../partials/boilerplate %>
+<% include ../partials/boilerplate2 %>
 
 
-<% events.forEach(events => { %>
+<% allFavorites.forEach(allFavorites => { %>
   <div class="event">
-        <h2><%= events.name %></h2>
-        <p><%= events.location %></p>
-        <p><a href="<%= events.url %>">Find tickets</a></p>
+        <h2><%= allFavorites.name %></h2>
+        <p><%= allFavorites.location %></p>
+        <p> <%= allFavorites.image %> </p>
+        <p><a href="<%= allFavorites.url %>">Find tickets</a></p>
   </div>
 <% }) %>
 
-<% include ../partials/end %>
+<% include ../partials/end2 %>

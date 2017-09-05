@@ -16,10 +16,10 @@ Event.findById = (id) => {
 Event.create = (event) => {
   return db.one(`
     INSERT INTO events
-    (name, location, url)
-    VALUES ($1, $2, $3)
+    (name, location, image, url)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
-  `, [event.name, event.location, event.url]);
+  `, [event.name, event.location, event.image, event.url]);
 }
 
 Event.update = (event, id) => {

@@ -1,11 +1,6 @@
 body {
-  background-color: #fff;
+  background-color: #d0dae1;
   font-family: Helvetica, sans-serif;
-  background-image: url("https://images.unsplash.com/reserve/rHBf1lEaSc2nsbqYPQau_IMG_0177.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 nav {
@@ -14,22 +9,24 @@ nav {
 }
 
 h1 > a {
-  color: #fff;
+  color: #6897bb;
 }
 
 #nav {
-  background-color: rgba(0,0,0,.1);
+  background-color: #fff;
   font-size: 18px;
   padding: 25px;
-  color: #dfa01e;
+  color: #d0dae1;
   display: flex;
   justify-content: space-between;
+  color: #6897bb;
 }
 
 li {
   display: inline-block;
   list-style: none;
   padding: 10px 5px 10px 5px;
+  background-color: #6897bb;
 }
 
 li > a {
@@ -38,11 +35,11 @@ li > a {
 }
 
 li:hover {
-  background-color: #6897bb;
+  background-color: #d0dae1;
 }
 
 li > a:hover {
-  color: #fff;
+  color: #d0dae1;
 }
 
 a {

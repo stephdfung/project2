@@ -18,14 +18,13 @@
 $(document).ready(function(){
 
 
-console.log("ready!");
+  const bgImages = [
+  'https://images.unsplash.com/reserve/rHBf1lEaSc2nsbqYPQau_IMG_0177.jpg',
+  'https://images.unsplash.com/photo-1487662701465-ee09afb4e1fa',
+  'https://images.unsplash.com/photo-1468869196565-78ea346a98ee',
+  'https://images.unsplash.com/photo-1468774871041-fc64dd5522f3'
+  ];
 
-
-$('.event').submit(function () {
-  console.log('submit run')
- return false;
+  $('body').css({'background-image': 'url(' + bgImages[Math.floor(Math.random() * bgImages.length)] + ')'});
 });
 
-
-
-});
