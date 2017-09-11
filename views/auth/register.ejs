@@ -1,14 +1,17 @@
 <% include ../partials/boilerplate %>
 
 <%# views/auth/register.ejs %>
-
+<div class="center">
 <div class="hero">
+  <h2>Register to save your favorite events!</h2>
 <form method="POST" action="/auth/register">
   <input name="username" type="text" placeholder="username" required />
   <input name="email" type="email" placeholder="email" required />
   <input name="password" type="password" placeholder="password" required />
   <p><input type="submit" value="Register!" /></p>
 </form>
+<p>Already a user? <a href="/auth/login">Log in here!</a></p>
+</div>
 </div>
 
 <% include ../partials/end %>

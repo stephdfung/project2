@@ -3,6 +3,6 @@ const favoritesRouter = express.Router();
 const favoritesController = require('../controller/favorites-controller');
 
 favoritesRouter.post('/', favoritesController.create);
-favoritesRouter.delete('/:id', favoritesController.destroy);
+// favoritesRouter.delete('/events/favorites', favoritesController.destroy);
 
 module.exports = favoritesRouter;

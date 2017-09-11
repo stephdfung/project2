@@ -2,12 +2,16 @@
 
 <%# views/auth/login.ejs %>
 
+<div class="center">
 <div class="hero">
+  <h2>Sign in below!</h2>
 <form method="POST" action="/auth/login">
   <input name="username" type="text" placeholder="username" required />
   <input name="password" type="password" placeholder="password" required />
   <p><input type="submit" value="Log in!" /></p>
 </form>
+<p>Not already a user? <a href="/auth/register">Register here!</a></p>
+</div>
 </div>
 
 <% include ../partials/end %>

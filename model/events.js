@@ -6,12 +6,12 @@ Event.findAll = () => {
   return db.query('SELECT * FROM events');
 };
 
-Event.findById = (id) => {
-  return db.oneOrNone(`
-    SELECT * FROM events
-    WHERE id = $1
-  `, [id]);
-};
+// Event.findById = (id) => {
+//   return db.oneOrNone(`
+//     SELECT * FROM events
+//     WHERE id = $1
+//   `, [id]);
+// };
 
 Event.create = (event) => {
   return db.one(`
@@ -22,22 +22,22 @@ Event.create = (event) => {
   `, [event.name, event.location, event.image, event.url]);
 }
 
-Event.update = (event, id) => {
-  return db.one(`
-    UPDATE events SET
-    name = $1,
-    location = $2,
-    url = $3,
-    WHERE id = $4
-    RETURNING *
-  `, [event.name, event.location, event.url, id]);
-}
+// Event.update = (event, id) => {
+//   return db.one(`
+//     UPDATE events SET
+//     name = $1,
+//     location = $2,
+//     url = $3,
+//     WHERE id = $4
+//     RETURNING *
+//   `, [event.name, event.location, event.url, id]);
+// }
 
-Event.destroy = (id) => {
-  return db.none(`
-    DELETE FROM events
-    WHERE id = $1
-  `, [id]);
-};
+// Event.destroy = (id) => {
+//   return db.none(`
+//     DELETE FROM events
+//     WHERE id = $1
+//   `, [id]);
+// };
 
 module.exports = Event;

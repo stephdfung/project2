@@ -3,35 +3,13 @@ const Favorite = require('../model/favorites');
 
 const eventController = {};
 
-eventController.index = (req, res) => {
-  Event.findAll()
-    .then(events => {
-      res.render('events/event-index', {
-        events: events,
-      })
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-}
+
 
 eventController.sendApiSeatGeek = (req, res) => {
   res.render('events/search', {
     event: res.locals.eventData
   })
 };
-
-eventController.show = (req, res) => {
-  Event.findById(req.params.id)
-    .then(event => {
-      res.render('event/event-show', {
-        event: event,
-      });
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-}
 
 //saving the api info to the local events table
 eventController.create = (req, res, next) => {
@@ -62,6 +40,19 @@ eventController.join = (req, res, next) => {
   });
 }
 
+
+eventController.favoritesShow = (req, res) => {
+  Favorite.display(req.user.id)
+  .then(allFavorites => {
+    res.render('events/favorites', {
+    allFavorites: allFavorites
+    });
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+}
+
 //saving the user id and the new event id to the favorites table
 eventController.favorite = (req, res, next) => {
   Favorite.create({
@@ -80,28 +71,29 @@ eventController.favorite = (req, res, next) => {
   });
 }
 
-eventController.update = (req, res) => {
-  Event.update({
-    name: req.body.name,
-    location: req.body.location,
-    url: req.body.url,
-  }, req.params.id).then(event => {
-    res.redirect(`/events/${event.id}`);
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-}
+// eventController.update = (req, res) => {
+//   Event.update({
+//     name: req.body.name,
+//     location: req.body.location,
+//     url: req.body.url,
+//   }, req.params.id).then(event => {
+//     res.redirect(`/events/${event.id}`);
+//   }).catch(err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   });
+// }
 
-eventController.delete = (req, res, next) => {
-  Favorite.destroy(req.params.id)
-    .then((event) => {
-      res.redirect('/favorites');
-      next();
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-}
+// eventController.delete = (req, res, next) => {
+//   console.log('inside eventController.delete')
+//   Favorite.destroy(req.params.id)
+//     .then((event) => {
+//       res.redirect('/favorites');
+//       next();
+//     }).catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// }
 
 module.exports = eventController;

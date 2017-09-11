@@ -14,10 +14,11 @@ favoritesController.create = (req, res) => {
   });
 }
 
-favoritesController.delete = (req, res) => {
-  Favorite.destroy(req.params.id)
+favoritesController.destroy = (req, res) => {
+  console.log('inside favorites controller destroy')
+  Favorite.destroy(req.body.id)
     .then(() => {
-      res.redirect('/favorites');
+      res.redirect('/events/favorites');
     }).catch(err => {
       console.log(err);
       res.status(500).json(err);

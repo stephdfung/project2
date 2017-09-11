@@ -13,7 +13,7 @@ Favorite.create = data => {
 
 Favorite.display = id => {
   return db.query(`
-    SELECT events.name, events.location, events.image, events.url
+    SELECT events.name, events.location, events.image, events.url, favorites.id
     FROM events
     JOIN favorites
     ON favorites.event_id = events.id
@@ -21,11 +21,12 @@ Favorite.display = id => {
     [ id ]);
 };
 
-Favorite.destroy = favorite => {
-  return db.oneOrNone(`
-    DELETE * FROM favorites
-    WHERE id = $1
-  `, [favorite]);
+Favorite.destroy = id => {
+  console.log('inside favorite.destroy')
+  return db.none(`
+    DELETE FROM favorites
+    WHERE id = $1`,
+    [ id ]);
 };
 
 module.exports = Favorite;

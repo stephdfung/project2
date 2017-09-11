@@ -1,6 +1,6 @@
 body {
   background-color: #fff;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Oxygen', sans-serif;
   background-image: url("https://images.unsplash.com/reserve/rHBf1lEaSc2nsbqYPQau_IMG_0177.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -15,6 +15,7 @@ nav {
 
 h1 > a {
   color: #fff;
+  font-family: 'Bitter', serif;
 }
 
 #nav {
@@ -47,11 +48,11 @@ li > a:hover {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #98BAD4;
 }
 
 a:hover {
-  color: #000;
+  text-decoration: underline #fff;
 }
 
 form {
@@ -67,6 +68,7 @@ input[type="submit"] {
   font-size: 13px;
   text-transform: uppercase;
   padding: 10px;
+  margin: 10px;
 }
 
 input[type="submit"]:hover {
@@ -84,6 +86,8 @@ input[type="text"] {
   width: 200px;
   padding: 10px;
   border: 0;
+  display: block;
+  margin: 0 auto;
 }
 
 input[type="email"] {
@@ -91,19 +95,44 @@ input[type="email"] {
   width: 200px;
   padding: 10px;
   border: 0;
+  display: block;
+  margin: 0 auto;
 }
 input[type="password"] {
   height: 20px;
   width: 200px;
   padding: 10px;
   border: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .hero {
-  max-height: 300px;
+  height: 300px;
   font-size: 45px;
   padding: 30px 0 30px 0;
   margin: 200px 0 45px 0;
+  align-content: center;
+  text-align: center;
+}
+
+.center > .hero {
+  height: 300px;
+  font-size: 45px;
+  padding: 30px 0 30px 0;
+  margin: 200px 0 45px 0;
+  align-content: center;
+  text-align: center;
+  background-color: rgba(0,0,0,.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 img {
@@ -147,4 +176,20 @@ h4 {
   font-size: 18px;
   height: 30px;
   color: #000;
+}
+
+p {
+  font-size: 13px;
+}
+
+.hero > h2 {
+  text-align: center;
+  font-size: 40px;
+  padding: 10px;
+  color: #fff;
+  font-weight: none;
+}
+
+.hero > p {
+  color: #fff;
 }

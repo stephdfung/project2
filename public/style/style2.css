@@ -1,6 +1,10 @@
 body {
-  background-color: #d0dae1;
-  font-family: Helvetica, sans-serif;
+  background: #d0dae1; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #d0dae1, #92aec3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #d0dae1, #92aec3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #d0dae1, #92aec3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #d0dae1, #92aec3); /* Standard syntax */
+  font-family: 'Oxygen', sans-serif;
 }
 
 nav {
@@ -10,6 +14,7 @@ nav {
 
 h1 > a {
   color: #6897bb;
+  font-family: 'Bitter', serif;
 }
 
 #nav {
@@ -48,14 +53,19 @@ a {
 }
 
 a:hover {
-  color: #000;
+  color: #6897bb;
+}
+
+.align-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 form {
-  text-align: center;
+  display: inline;
 }
 
-input[type="submit"] {
+input[type="submit"], .button {
   color: #fff;
   background-color: #6897bb;
   border: none;
@@ -64,13 +74,15 @@ input[type="submit"] {
   font-size: 13px;
   text-transform: uppercase;
   padding: 10px;
+  margin: 0 5px 0 5px;
 }
 
-input[type="submit"]:hover {
-  background-color: #597e9b
+input[type="submit"]:hover, .button:hover {
+  background-color: #597e9b;
+  color: #fff;
 }
 
-input[type="submit"]:active {
+input[type="submit"]:active, .button:active {
   background-color: #597e9b;
   box-shadow: 0 2px #6897bb;
   transform: translateY(2px);
@@ -121,29 +133,47 @@ h2 {
   font-weight: 800;
 }
 
-#slider {
-  text-align: center;
-  padding: 50px;
+.event {
+  text-align: left;
+  width: 100%;
+  padding-bottom: 10px;
 }
 
-.event {
-  max-width: 650px;
-  height: 400px;
-  background-color: rgba(0,0,0,.1);
-  margin: 0 auto;
-  text-align: center;
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.event-align{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 650px;
+  background-color: rgba(255,255,255,.1);
+  margin: 20px;
 }
 
 h3 {
-  background-color: #fff;
   font-size: 36px;
-  color: #000;
-  margin-top: 50px;
+  color: rgba(255,255,255,.9);
+  padding-bottom: 5px;
+  border-bottom: 2px solid #fff;
 }
 
 h4 {
   font-size: 18px;
   height: 30px;
-  color: #000;
   margin: 15px;
+  text-transform: uppercase;
+  font-family: 'Bitter', serif;
+  letter-spacing:.2em;
+}
+
+h5 {
+  font-size: 150pt;
+  color: rgba(255,255,255,.5);
+  font-family: 'Bitter', serif;
 }

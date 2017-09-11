@@ -1,23 +1,32 @@
 <% include ../partials/boilerplate2 %>
 
+<div class="center">
 
-<% allFavorites.forEach(allFavorites => { %>
-  <div class="event">
-        <h2><%= allFavorites.name %></h2>
-        <p><%= allFavorites.location %></p>
-        <p><img src=" <%= allFavorites.image %> "></p>
-        <p><a href="<%= allFavorites.url %>">Find tickets</a></p>
+  <% let num = 0 %>
+    <% allFavorites.forEach(allFavorites => { %>
 
+      <div class="event-align">
 
-        <form method="DELETE" action="/events/favorites">
-        <input type="hidden" name="name" value="<%= event['events'][i]['title'] %>" />
-        <input type="hidden" name="location" value="<%= event['events'][i]['venue']['address'] %>, <%= event['events'][i]['venue']['city'] %>" />
-        <input type="hidden" name="image" value="<%= event['events'][i]['performers'][0]['image'] %>" />
-        <input type="hidden" name="url" value="<%= event['events'][i]['venue']['url'] %>" />
-        <input type="submit" value="Save" />
-      </form>
+        <h5><%= num+= 1 %></h5>
+          
+          <div class="event">
+
+            <h3><%= allFavorites.name %></h3>
+            <h4><%= allFavorites.location %></h4>
+
+              <p><center><img src=" <%= allFavorites.image %> "></center></p>
+
+            <div class="align-buttons">
+              <a class="button" href="<%= allFavorites.url %>">Find tickets</a>
+              <form action="/events/favorites?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value=" <%= allFavorites.id %>" />
+                <input type="submit" value="Delete" />
+              </form>
+          </div>
+          </div>
+
       </div>
-  </div>
-<% }) %>
+  <% }) %>
+</div>
 
 <% include ../partials/end2 %>
